@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# list of current dir
+
+lslist=$(ls)
+
+for i in $lslist; do
+	echo "$i" | cut -d '-' -f2
+done
