@@ -2,15 +2,18 @@
 # Creates file
 # Displays and deletes
 
-function love() {
-	rm /var/run/holbertonscript.pid
+echo $$ > /var/run/myscript.pid
+
+func() {
+	rm /var/run/myscript.pid
 	exit
 }
 
-trap "echo I hate the kill command;love" SIGTERM
-trap "echo Y U no love me?!;love" SIGINT
-
-echo $$ >> /var/run/holbertonscript.pid
-while [ true ]; do
-	echo To infinity and beyond;
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+	trap 'echo "Y U no love me?!"'SIGINT
+	trap 'echo "I hate the kill command" && func' SIGTERM
+	trap 'func' SIGQUIT
 done
